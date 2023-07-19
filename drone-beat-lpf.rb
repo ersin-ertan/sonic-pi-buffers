@@ -39,3 +39,36 @@ with_fx :lpf do
     end
   end
 end
+
+=begin
+# v1 attempt
+
+bs=2
+
+with_fx :reverb, room: 0.7 do
+  with_fx :slicer, phase: 1/3.0, amp_min: 2/3.0 do
+    live_loop :bt do
+      play :D2
+      sleep bs
+      play :D3
+      sleep bs
+      play :A2
+      sleep bs
+      play :C3
+      sleep bs
+    end
+end end
+
+with_fx :lpf, cutoff: 110 do
+  live_loop :ht do
+    7.times do
+      sample :drum_cymbal_closed, amp:0.25
+      sleep 1
+    end
+    3.times do
+      sample :drum_cymbal_closed, amp:0.25
+      sleep 1/3.0
+    end
+  end
+end
+=end
